@@ -1,0 +1,14 @@
+[project]
+name = "barcode-scanner"
+version = "0.1.0"
+description = "Barcode and QR Code Scanner with OpenCV and ZBar"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "opencv-python",
+    "pyzbar",
+    "pillow"
+]
+
+[project.optional-dependencies]
+gui = ["tk"]
