@@ -4,7 +4,8 @@ from pyzbar.pyzbar import decode
 from datetime import datetime
 import json
 
-def decode_barcodes(frame):
+
+def decode_barcodes(frame) -> list:
     """Decode barcodes and QR codes from frame"""
     # Convert to grayscale for better detection
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -37,7 +38,7 @@ def decode_barcodes(frame):
     return results
 
 
-def draw_bounding_boxes(frame, decoded_objects):
+def draw_bounding_boxes(frame, decoded_objects) -> None:
     """Draw bounding boxes and labels around detected codes"""
     for obj in decoded_objects:
         # Draw bounding box
@@ -62,7 +63,7 @@ class BarcodeQRScanner:
         self.cap = None
         self.scanned_codes = set()
 
-    def initialize_camera(self, camera_index=0):
+    def initialize_camera(self, camera_index=0) -> bool:
         """Initialize the camera"""
         self.cap = cv2.VideoCapture(camera_index)
         if not self.cap.isOpened():
@@ -74,7 +75,7 @@ class BarcodeQRScanner:
 
         return True
 
-    def scan_from_camera(self):
+    def scan_from_camera(self) -> None:
         """Real-time scanning from a camera"""
         try:
             if not self.initialize_camera():
@@ -114,7 +115,7 @@ class BarcodeQRScanner:
         finally:
             self.cleanup()
 
-    def scan_from_image(self, image_path):
+    def scan_from_image(self, image_path) -> None:
         """Scan barcodes from an image file"""
         try:
             # Read image
@@ -142,7 +143,7 @@ class BarcodeQRScanner:
         finally:
             cv2.destroyAllWindows()
 
-    def save_scanned_codes(self, filename="scanned_codes.json"):
+    def save_scanned_codes(self, filename="scanned_codes.json") -> None:
         """Save scanned codes to a JSON file"""
         codes_list = list(self.scanned_codes)
         with open(filename, 'w') as f:
@@ -153,7 +154,7 @@ class BarcodeQRScanner:
             }, f, indent=2)
         print(f"Scanned codes saved to {filename}")
 
-    def cleanup(self):
+    def cleanup(self) -> None:
         """Clean up resources"""
         if self.cap:
             self.cap.release()

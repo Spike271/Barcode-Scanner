@@ -19,7 +19,7 @@ class ScannerGUI:
 
         self.setup_ui()
 
-    def setup_ui(self):
+    def setup_ui(self) -> None:
         # Main frame
         main_frame = ttk.Frame(self.root, padding="10")
         main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
@@ -63,17 +63,17 @@ class ScannerGUI:
         main_frame.rowconfigure(1, weight=1)
         main_frame.rowconfigure(2, weight=1)
 
-    def start_camera(self):
+    def start_camera(self) -> None:
         if not self.is_scanning:
             self.is_scanning = True
             thread = threading.Thread(target=self.camera_scan_thread)
             thread.daemon = True
             thread.start()
 
-    def stop_camera(self):
+    def stop_camera(self) -> None:
         self.is_scanning = False
 
-    def camera_scan_thread(self):
+    def camera_scan_thread(self) -> None:
         try:
             if not self.scanner.initialize_camera():
                 messagebox.showerror("Error", "Could not initialize camera")
@@ -111,15 +111,15 @@ class ScannerGUI:
             self.scanner.cleanup()
             self.is_scanning = False
 
-    def update_video_display(self, photo):
+    def update_video_display(self, photo) -> None:
         self.video_label.configure(image=photo)
         self.video_label.image = photo
 
-    def add_result(self, result):
+    def add_result(self, result) -> None:
         self.results_text.config(state=tk.NORMAL)
         self.results_text.insert(tk.END, result + "\n")
 
-    def scan_image(self):
+    def scan_image(self) -> None:
         filename = filedialog.askopenfilename(
             title="Select Image",
             filetypes=[("Image files", "*.jpg *.jpeg *.png *.bmp *.tiff")]
@@ -131,7 +131,7 @@ class ScannerGUI:
             for code in self.scanner.scanned_codes:
                 self.add_result(f"QR/BARCODE: {code}")
 
-    def save_results(self):
+    def save_results(self) -> None:
         self.scanner.save_scanned_codes()
         messagebox.showinfo("Success", "Results saved to scanned_codes.json")
 

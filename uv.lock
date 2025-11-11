@@ -15,6 +15,7 @@ dependencies = [
     { name = "pillow", version = "11.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "pillow", version = "12.0.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "pyzbar" },
+    { name = "zbar" },
 ]
 
 [package.optional-dependencies]
@@ -28,6 +29,7 @@ requires-dist = [
     { name = "pillow" },
     { name = "pyzbar" },
     { name = "tk", marker = "extra == 'gui'" },
+    { name = "zbar" },
 ]
 provides-extras = ["gui"]
 
@@ -404,3 +406,9 @@ sdist = { url = "https://files.pythonhosted.org/packages/a0/81/742b342fd642e672f
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1e/0b/029cbdb868bb555fed99bf6540fff072d500b3f895873709f25084e85e33/tk-0.1.0-py3-none-any.whl", hash = "sha256:703a69ff0d5ba2bd2f7440582ad10160e4a6561595d33457dc6caa79b9bf4930", size = 3879, upload-time = "2019-07-08T06:51:55.175Z" },
 ]
+
+[[package]]
+name = "zbar"
+version = "0.10"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/33/54/cc5819efc9ee7e34b60b41e1d2d4753b6dd0c26a41c9a552611f66aa106e/zbar-0.10.tar.bz2", hash = "sha256:597dc972199341426d74e9edc42dbde76c6ee6a884ec2039a81d266300a6d46b", size = 16228, upload-time = "2009-11-10T15:49:59.332Z" }

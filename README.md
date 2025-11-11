@@ -1,12 +1,12 @@
-# 📱 Barcode Scanner
+# 📱 Barcode and QR Code Scanner
 
-A powerful and intuitive Python-based barcode scanning application that captures, processes, and stores barcode data with ease.
+A powerful and intuitive Python-based barcode and QRCode scanning application that captures, processes, and stores barcode data with ease.
 
 ## ✨ Features
 
 - **Real-time Barcode Detection**: Scan barcodes instantly using your webcam or camera
 - **Multiple Format Support**: Handles various barcode formats (1D and 2D codes)
-- **Data Persistence**: Automatically saves scanned barcode data to JSON for easy access
+- **Data Persistence**: Scanned barcode data can be saved to JSON for easy access
 - **Computer Vision Powered**: Leverages OpenCV for robust image processing
 - **User-Friendly Interface**: Simple and intuitive application design
 - **Efficient Processing**: Optimized for fast barcode recognition
@@ -16,26 +16,21 @@ A powerful and intuitive Python-based barcode scanning application that captures
 ### Prerequisites
 
 - Python 3.13.9 or higher
-- Virtualenv for environment management
+- [uv](https://docs.astral.sh/uv/#installation) package manager
+- [ZBar bar code reader](https://zbar.sourceforge.net/download.html) 
 - A camera/webcam connected to your system
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Spike271/Barcode-Scanner.git
    cd barcode-scanner
    ```
 
-2. **Set up a virtual environment**
+2. **Install dependencies**
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
+   uv sync
    ```
 
    The project includes:
@@ -47,5 +42,5 @@ A powerful and intuitive Python-based barcode scanning application that captures
 
 **Run the scanner:**
 ```bash
-python main.py
+uv run main.py
 ```
