@@ -6,11 +6,12 @@ from PIL import Image, ImageTk
 from barcode_scanner import BarcodeQRScanner, draw_bounding_boxes, decode_barcodes
 import threading
 
+
 class ScannerGUI:
     def __init__(self, name):
         self.root = name
         self.root.title("Barcode & QR Code Scanner")
-        self.root.geometry("800x600")
+        self.center_window(800, 600)
 
         self.results_text = None
         self.video_label = None
@@ -18,6 +19,15 @@ class ScannerGUI:
         self.scanner = BarcodeQRScanner()
 
         self.setup_ui()
+
+    def center_window(self, width: int, height: int):
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+
+        x = (screen_width - width) // 2
+        y = (screen_height - height) // 2
+
+        self.root.geometry(f"{width}x{height}+{x}+{y}")
 
     def setup_ui(self) -> None:
         # Main frame
@@ -29,14 +39,10 @@ class ScannerGUI:
         controls_frame.grid(row=0, column=0, sticky=tk.W, pady=5)
 
         # Buttons
-        ttk.Button(controls_frame, text="Start Camera",
-                   command=self.start_camera).pack(side="left", padx=5)
-        ttk.Button(controls_frame, text="Stop Camera",
-                   command=self.stop_camera).pack(side="left", padx=5)
-        ttk.Button(controls_frame, text="Scan Image",
-                   command=self.scan_image).pack(side="left", padx=5)
-        ttk.Button(controls_frame, text="Save Results",
-                   command=self.save_results).pack(side="left", padx=5)
+        ttk.Button(controls_frame, text="Start Camera", command=self.start_camera).pack(side="left", padx=5)
+        ttk.Button(controls_frame, text="Stop Camera", command=self.stop_camera).pack(side="left", padx=5)
+        ttk.Button(controls_frame, text="Scan Image", command=self.scan_image).pack(side="left", padx=5)
+        ttk.Button(controls_frame, text="Save Results", command=self.save_results).pack(side="left", padx=5)
 
         # Video display
         self.video_label = ttk.Label(main_frame)
@@ -48,10 +54,8 @@ class ScannerGUI:
 
         self.results_text = tk.Text(results_frame, height=10, width=80)
         self.results_text.tag_configure("bold", font=("Arial", 12, "normal"))
-        scrollbar = ttk.Scrollbar(results_frame, orient=tk.VERTICAL,
-                                  command=self.results_text.yview)
+        scrollbar = ttk.Scrollbar(results_frame, orient=tk.VERTICAL, command=self.results_text.yview)
         self.results_text.configure(yscrollcommand=scrollbar.set)
-
 
         self.results_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
@@ -124,6 +128,7 @@ class ScannerGUI:
             title="Select Image",
             filetypes=[("Image files", "*.jpg *.jpeg *.png *.bmp *.tiff")]
         )
+
         if filename:
             self.scanner.scan_from_image(filename)
             # Update results
