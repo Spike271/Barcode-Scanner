@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="GitVisuals/qrcode_github.png" alt="QR Code" title="QR Code" width="65%">
+<img src="GitVisuals/qrcode_github.png" alt="QR Code" title="QR Code" width="35%">
 
 ## Barcode and QR Code Scanner
 
