@@ -7,6 +7,12 @@
 A powerful and intuitive Python-based barcode and QRCode scanning application that captures, processes, and stores barcode data with ease.
 </div>
 
+## Screenshot
+
+<img src="GitVisuals/ss1.png" alt="ss1">
+
+<img src="GitVisuals/ss2.png" alt="ss2" width="89%">
+
 ## Features
 
 - **Real-time Barcode Detection**: Scan barcodes instantly using your webcam or camera
