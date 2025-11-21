@@ -9,9 +9,7 @@ A powerful and intuitive Python-based barcode and QRCode scanning application th
 
 ## Screenshot
 
-<img src="GitVisuals/ss1.png" alt="ss1">
-
-<img src="GitVisuals/ss2.png" alt="ss2" width="89%">
+<img src="GitVisuals/ss1.png" alt="ss1"><img src="GitVisuals/ss2.png" alt="ss2" width="89%">
 
 ## Features
 
